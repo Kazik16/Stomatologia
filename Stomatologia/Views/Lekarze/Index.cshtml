@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Stomatologia.Models.Lekarz>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pesel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TelephoneNumber)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pesel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelephoneNumber)
+            </td>
+
+            <td>
+                @if (User.IsInRole("Admins")) { 
+                @Html.ActionLink("Edycja", "Edit", new { id = item.Id })  
+                @Html.ActionLink("Szczegóły", "Details", new { id = item.Id }) 
+                @Html.ActionLink("Usuń", "Delete", new { id = item.Id })
+                }
+            </td>
+        </tr>
+    }
+
+</table>
