@@ -11,6 +11,8 @@ namespace Stomatologia.Models
     {
        // [Key]
        // [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+
         public int Id { get; set; }
 
         public string LekarzId { get; set; }
